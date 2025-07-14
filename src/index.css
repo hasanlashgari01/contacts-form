@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "YekanBakh";
+  src: url("/fonts/YekanBakh-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YekanBakh";
+  src: url("/fonts/YekanBakh-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: #4f46e5;
+  --color-secondary: #7c3aed;
+  --font-yekan: "YekanBakh";
+}
+
+@layer base {
+  html {
+    direction: rtl;
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-yekan bg-gray-50 text-gray-800;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes textPop {
+    0% {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
+
+@layer components {
+  .animate-fade-in {
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-text-pop {
+    animation: textPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 rounded-lg transition-all duration-200;
+    @apply border border-gray-300 bg-white;
+    @apply focus:ring-2 focus:ring-indigo-500 focus:border-transparent;
+  }
+
+  .avatar {
+    @apply w-14 h-14 rounded-full border-4 border-white shadow-md;
+    @apply object-cover group-hover:rotate-6 transition-transform duration-300;
+  }
+}
+
+.box {
+  @apply bg-white  rounded-xl shadow-lg p-4 md:p-6;
+}
